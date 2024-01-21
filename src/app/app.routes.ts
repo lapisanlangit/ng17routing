@@ -26,6 +26,18 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: 'contact', title: 'Contact', component: ContactComponent },
+  {
+    path: 'contact',
+    title: 'Contact',
+    loadChildren: () =>
+      import('./contact/contact.routes').then((r) => r.CONTACT_ROUTES),
+  },
+  {
+    path: 'register',
+    title: 'Register',
+    loadComponent: () =>
+      import('./register/register.component').then((c) => c.RegisterComponent),
+  },
+
   { path: '**', component: PagenotfoundComponent },
 ];
